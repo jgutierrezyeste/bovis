@@ -256,6 +256,13 @@
                     $opt['visible']= true;
                     $opt['value']=  $this->fields["plugin_comproveedores_experiencestypes_id"];                      
 
+                    /*$archivo=fopen("desplegables.txt","w+");
+                    fwrite($archivo,"comunidades: ".PHP_EOL);
+                    fwrite($archivo, print_r($optUbicacion['value'],true).PHP_EOL);
+                    fwrite($archivo,"estados: ".PHP_EOL);
+                    fwrite($archivo, print_r($optEstado['value'],true).PHP_EOL);
+                    fwrite($archivo,"tipos: ".PHP_EOL);
+                    fwrite($archivo, print_r($opt['value'],true).PHP_EOL);*/
 
                     //DATOS DEL PERFIL Y USUARIO
                     $self                = new self();
@@ -371,6 +378,17 @@
                         echo "<textarea style='padding:7px; width:95%; resize: none;' cols='20' rows='3' name='observaciones'></textarea>";
                         echo "</td>";
                     echo"</tr>";
+                    /*añado esto para poner en otra fila las observacioens*/
+                    /*echo"<tr>";
+                      
+                        echo "<td colspan='5' style='vertical-align: bottom;'>" . __('Observaciones') . "</td>";
+                    echo "</tr>";
+                    echo"<tr>";
+	                    echo "<td colspan='5'  style='vertical-align: top;'>";
+	                    echo "<textarea style='padding:7px; width:95%; resize: none;' cols='20' rows='3' name='observaciones'></textarea>";
+	                    echo "</td>";
+                    echo "</tr>";
+                    /*hasta aqui nuevas filas para las observaciones*/
                     echo"</tbody>";
                     echo"</table>";
 
@@ -403,6 +421,7 @@
 
 
     function consultaAjax(){
+    	$archivo=fopen("consultaAjax.txt","w+");
 
         GLOBAL $CFG_GLPI;
 
@@ -410,6 +429,7 @@
         "<script type='text/javascript'>
 
             function gestionBotones(){
+
                 if($('#idExperiencia').val()=='0'){
                     $('#add').css('display','inline');
                     $('#addADD').css('display','inline');
@@ -492,8 +512,9 @@
             }
 
             function modificar(idExperiencia){
-                var dat = '';
+            	var dat = '';
                 var aux = '';
+
 
                 $('#idExperiencia').val(idExperiencia);
                 aux = '#name_'+idExperiencia;
@@ -557,6 +578,11 @@
             //Limpia el formulario
             $('#cancel').on('click', function(){
                 limpiarFormulario();
+            }); 
+
+            //actualizarFormulario
+            $('#update').on('click', function(){
+                guardarModificacion();
             }); 
 
             function anadirADD(){
@@ -755,6 +781,7 @@
             } //anadir
 
             function guardarModificacion(){
+
                 var experiencia_bovis = 0;
                 if($('input[name=experiencia_bovis]').prop('checked')) {	
                     experiencia_bovis = 1;
@@ -790,6 +817,7 @@
                 var plugin_comproveedores_experiencesstates_id = $('input[name=plugin_comproveedores_experiencesstates_id]').val();
                 var plugin_comproveedores_experiencestypes_id = $('input[name=plugin_comproveedores_experiencestypes_id]').val();
                 var plugin_comproveedores_communities_id = $('input[name=plugin_comproveedores_communities_id]').val();
+                
                 var name = $('textarea[name=name]').val();
                 var cliente = $('textarea[name=cliente]').val();
                 var observaciones = $('textarea[name=observaciones]').val();
@@ -842,6 +870,7 @@
             });
             
         </script>";
+     
 
         return $consulta;
     }

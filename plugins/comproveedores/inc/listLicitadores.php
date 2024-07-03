@@ -1,5 +1,7 @@
-<?php			
-			
+   
+            
+<?php	
+
 include ("../../../inc/includes.php");
 GLOBAL $DB,$CFG_GLPI;
 $objCommonDBT=new CommonDBTM;
@@ -31,11 +33,13 @@ if ($_GET['supplier_id']) {
 }
 
 
+
 $profileID = 0;
 $USERID = $_SESSION['glpiID'];
 $query0 = "SELECT profiles_id as profile FROM glpi_users WHERE id=$USERID";
 $result0 = $DB->query($query0);
 $aux0 = $DB->fetch_array($result0);
+
 if($aux0['profile']<>''){
     $profileID = $aux0['profile'];
 }
@@ -62,18 +66,21 @@ if ($ciflic != '') {
 if ($supplier_id != '' And $supplier_id != '0') {
     if ($where != "") { $where = $where." AND "; }
     $where = " (s.id in ({$supplier_id})) " ;
-}	            
+}	 
+
 if ($where != "") { 
     $where = " WHERE ".$where; 
     $sql = "INSERT INTO glpi_plugin_comproveedores_preselections  (suppliers_id, projecttasks_id, is_deleted, is_recursive, entities_id)
     SELECT DISTINCT s.id, ".$projecttasks_id.", 0, 0, 0
     FROM glpi_suppliers as s ";
 
-    $sql = $sql.$where;            
+    $sql = $sql.$where; 
+
     $result = $DB->query($sql);
     //si obtenemos algo de esta consulta hay que incorporarlos a la tabla de preseleccionados
     //el usuario ya quitará los que no crea necesarios
 } 
+
 
 $queryPreseleccionados = "SELECT p.id as licitador_id,
 suppliers_id,
@@ -90,10 +97,12 @@ LEFT join glpi_projecttaskteams as t on p.projecttasks_id = t.projecttasks_id an
 WHERE p.projecttasks_id=".$projecttasks_id." AND s.is_deleted=0 AND p.is_deleted=0;";
 
 $resultPreseleccionados = $DB->query($queryPreseleccionados);
+
 //echo $queryPreseleccionados;
 
 echo "<table id='tblLicitadores' class='display compact' style='width:100%; float:left; position: relative;'>";
 echo "<thead>";
+
     echo "<th>licitador</th>";
     echo "<th>cif/nif</th>";
     if($ver){echo "<th>importe ofertado (miles €)</th>";}

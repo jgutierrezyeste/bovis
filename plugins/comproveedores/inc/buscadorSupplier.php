@@ -8,7 +8,7 @@ $opt_project['comments']=false;
 $opt_project['addicon']=false;
 $opt_project['width']='400px';
 	
-	
+
 echo "<div style='position:relative; width:100%; margin: 0px auto 30px auto;'>";
 echo "<table class='tab_cadre_fixe' style='width:35%;border-radius: 4px !important; box-shadow: 0px 1px 2px 1px #D2D2D2'>";
 echo "<thead>";
@@ -61,6 +61,7 @@ echo "<td rowspan='6' style='text-align: center;vertical-align: top;padding: 30p
 echo "</table>";
 echo "</div>";
 
+
     $profileID = 0;
     $USERID = $_SESSION['glpiID'];
     $query0 = "SELECT profiles_id as profile FROM glpi_users WHERE id=$USERID";
@@ -80,11 +81,20 @@ echo "</div>";
 echo "<div id='divlist' style='width: 100%;border: 1px solid #ccc;min-height: 300px; background-color:#e6e6e6;'></div>";
 
 echo "
-<script type='text/javascript'>
+<script type='text/javascript' >
         
         $('#botonBuscar').on('click', function () {
             buscar();
-        });			
+        });		
+
+        document.addEventListener('keydown', function(event) {
+           
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                buscar();
+            }
+        });	
+
         $('#limpieza').on('click', function() {
             limpiar();
         });

@@ -134,7 +134,9 @@
 			inner join glpi_plugin_comproveedores_preselections as p on t.projecttasks_id = p.projecttasks_id 
 			inner join glpi_suppliers as s on s.id = t.items_id
 			and t.items_id = p.suppliers_id
-			WHERE t.projecttasks_id=$projecttasks_id" ;
+			/*añadimos la condicion de que la empresa no se encuentre eliminada */
+			WHERE t.projecttasks_id=$projecttasks_id and s.is_deleted= 0" ;
+		
 			//echo $query;
 		   
 			$result = $DB->query($query);

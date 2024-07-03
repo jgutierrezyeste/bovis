@@ -85,6 +85,7 @@
 		$newID = $PluginExperience->add($_GET);
 
 		$query ="SELECT id FROM glpi_plugin_comproveedores_experiences WHERE cv_id=".$_GET['cv_id']." ORDER BY id DESC LIMIT 1";
+		
 
 		$result = $DB->query($query);
 			

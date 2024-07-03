@@ -233,7 +233,15 @@ class Search {
                 echo "</table>";              
         echo "</div>";        
 
-	echo "<script type='text/javascript'>
+	echo "<script type='text/javascript' >
+
+                document.addEventListener('keydown', function(event) {
+                       
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            buscar();
+                        }
+                    });     
 
                 $('#modalGraficas').dialog({
                   autoOpen: false,
@@ -478,6 +486,8 @@ class Search {
 		$('#maxima').val(formatImporteMaximo);		
 		$('#comienzoINI').datetimepicker({timeFormat:'',dateFormat: 'dd-mm-yy'});
 		$('#comienzoFIN').datetimepicker({timeFormat:'',dateFormat: 'dd-mm-yy'});
+
+
 		
 	</script>";			
 	
