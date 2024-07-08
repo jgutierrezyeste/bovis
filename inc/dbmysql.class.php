@@ -115,10 +115,13 @@ class DBmysql {
          echo $hostport[1];
          $this->dbh = @new mysqli($hostport[0], $this->dbuser, rawurldecode($this->dbpassword),
                                   $this->dbdefault, $hostport[1]);
+         
       } else {
          // :Socket
          $this->dbh = @new mysqli($hostport[0], $this->dbuser, rawurldecode($this->dbpassword),
                                   $this->dbdefault, ini_get('mysqli.default_port'), $hostport[1]);
+                  
+
       }
 
 
@@ -127,7 +130,7 @@ class DBmysql {
          $this->error     = 1;
       } else {
          //$this->dbh->set_charset(isset($this->dbenc) ? $this->dbenc : "utf8");
-
+            $this->dbh->query("SET NAMES 'utf8'");
          if (GLPI_FORCE_EMPTY_SQL_MODE) {
             $this->dbh->query("SET SESSION sql_mode = ''");
          }
