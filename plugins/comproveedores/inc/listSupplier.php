@@ -73,7 +73,7 @@ LEFT JOIN  glpi_projects as proyectos on proyectos.id=paquetes.projects_id";
     }
     if($_GET['cif']!=''){
        if($where!='') {$where.=' or ';}
-        $where.=$where." trim(proveedores.cif)=trim('".$_GET['cif']."')";
+        $where.=$where." trim(proveedores.cif) LIKE trim('%".$_GET['cif']."%')";
     }
     if($_GET['id_proyecto']!='' && $_GET['id_proyecto']>0){
        if($where!='' && $where!='0') {$where.=' or ';}
@@ -81,7 +81,7 @@ LEFT JOIN  glpi_projects as proyectos on proyectos.id=paquetes.projects_id";
     }
     if($_GET['codigo_proyecto']!=''){
        if($where!='') {$where.=' or ';}
-       $where.=" proyectos.code='".$_GET['codigo_proyecto']."' ";
+       $where.=" proyectos.code LIKE'%".$_GET['codigo_proyecto']."%' ";
     }
     //$where.=" proveedores.is_deleted=0 ";
 
