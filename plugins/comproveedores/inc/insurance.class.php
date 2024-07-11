@@ -209,7 +209,7 @@
                                                             echo "<td class='center'>".Dropdown::getDropdownName("glpi_entities",$data['entities_id'])."</td>";
                                                             echo "<td class='left'>".$data['cia_aseguradora']."</td>";
                                                             echo "<td class='right'>".number_format($data['cuantia'], 2, ',', '.')." €</td>";
-                                                            echo "<td class='center'>".$data['fecha_caducidad']."</td>";
+                                                            echo "<td class='center'>".date("d-m-Y",strtotime($data['fecha_caducidad']))."</td>";
                                                             echo "<td class='center'>".$data['numero_empleados_asegurados']."</td>";	
                                                            // if($profile_Id!=14){
                                                                 echo "<td class='center'>";
@@ -247,7 +247,7 @@
 				$opt['value']= null;
 			}else{
 				
-				$opt['value']= $this->fields['fecha_caducidad'].' 00:00';
+				$opt['value']= $this->fields['fecha_caducidad'];
 			}
 			
 

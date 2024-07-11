@@ -2805,6 +2805,7 @@ class Html {
     * @return rand value used if displayes else string
    **/ 
    static function showDateTimeField($name, $options = []) {
+
       global $CFG_GLPI;
 
       $p['value']      = '';
@@ -2812,14 +2813,14 @@ class Html {
       $p['canedit']    = true;
       $p['mindate']    = '';
       $p['maxdate']    = '';
-      $p['mintime']    = '';
-      $p['maxtime']    = '';
+     /* $p['mintime']    = '';
+      $p['maxtime']    = '';*/
       $p['timestep']   = -1;
       $p['showyear']   = true;
       $p['display']    = true;
       $p['rand']       = mt_rand();
       $p['required']   = false;
-      $p['hidetime']   = false;
+      /*$p['hidetime']   = false;*/
       $p['hideday']    = false;
 	  
 
@@ -2833,28 +2834,33 @@ class Html {
          $p['timestep'] = $CFG_GLPI['time_step'];
       }
 
-      $minHour   = 0;
+      /*$minHour   = 0;
       $maxHour   = 23;
       $minMinute = 0;
-      $maxMinute = 59;
+      $maxMinute = 59;*/
 
-      $date_value = '';
+      /*$date_value = '';
       $hour_value = '';
       if (!empty($p['value'])) {
          list($date_value, $hour_value) = explode(' ', $p['value']);
-      }
+        
+      }*/
 
-      if (!empty($p['mintime'])) {
+      /*if (!empty($p['mintime'])) {
+         fwrite($archivo, "entra en if de mintime");
          list($minHour, $minMinute) = explode(':', $p['mintime']);
          $minMinute = 0;
 
          // Check time in interval
          if (!empty($hour_value) && ($hour_value < $p['mintime'])) {
+            fwrite($archivo,"segundo if de mintime");
             $hour_value = $p['mintime'];
          }
-      }
+      }*/
 
-      if (!empty($p['maxtime'])) {
+      /*if (!empty($p['maxtime'])) {
+                     fwrite($archivo,"entra if de maxtime");
+
          list($maxHour, $maxMinute) = explode(':', $p['maxtime']);
          $maxMinute = 59;
 
@@ -2862,23 +2868,34 @@ class Html {
          if (!empty($hour_value) && ($hour_value > $p['maxtime'])) {
             $hour_value = $p['maxtime'];
          }
-      }
+      }*/
 
       // reconstruct value to be valid
-      if (!empty($date_value)) {
-         $p['value'] = $date_value.' '.$hour_value;
-      }
+      /*if (!empty($date_value)) {
+         //$p['value'] = $date_value.' '.$hour_value;
+         $p['value'] = $date_value;
+
+      }*/
 
       $output = "<div class='no-wrap'>";
       
       //Convertir en tipo date
-      if($p['hidetime']){
+      /*if($p['hidetime']){
                 $output .= "<input id='showdate".$p['rand']."' type='text' name='_$name' value='".
                              trim(self::convDate($p['value']))."'";
       }else{
                 $output .= "<input id='showdate".$p['rand']."' type='text' name='_$name' value='".
                              trim(self::convDateTime($p['value']))."'";
-      }
+      }*/
+      /*nuevo*/
+
+      $output .= "<input id='showdate".$p['rand']."' type='text' name='_$name' value='".
+                             date("d-m-Y",strtotime($p['value']))."'";
+
+       /*$output .= "<input id='showdate".$p['rand']."' type='text' name='_$name' value='".($p['value'])!=' '?
+                             date("d-m-Y",strtotime($p['value'])):' '."'";
+*/
+      /*hasta aqui lo nuevo*/
       if ($p['required'] == true) {
          $output .= " required='required'";
       }
@@ -2891,6 +2908,7 @@ class Html {
       }
       $output .= "</div>";
 
+
       $js = "$(function(){";
       if ($p['maybeempty'] && $p['canedit']) {
          $js .= "$('#resetdate".$p['rand']."').click(function(){
@@ -2899,13 +2917,13 @@ class Html {
                   });";
       }
         //if ($solomes == 0) {
-          $js .= "$( '#showdate".$p['rand']."' ).datetimepicker({
+          $js .= "$( '#showdate".$p['rand']."' ).datepicker({
                                   altField: '#hiddendate".$p['rand']."',
-                                  altFormat: 'dd/mm/yy',
-                                  dateFormat: 'dd/mm/yy',
-                                  altTimeFormat: 'HH:mm',
-                                  pickerTimeFormat : 'HH:mm',
-                                  altFieldTimeOnly: false,
+                                  altFormat: 'yy-mm-dd',
+                                  dateFormat: 'yy-mm-dd',
+                                  /*altTimeFormat: 'HH:mm:ss',
+                                  pickerTimeFormat : 'HH:mm:ss',
+                                  altFieldTimeOnly: false,*/
                                   firstDay: 1,
                                   parse: 'loose',
                                   showAnim: '',
@@ -2974,11 +2992,11 @@ class Html {
 			  $(this).datepicker('setDate', new Date(inst.selectedYear, inst.SelectedMonth, 1));
 		  }";
 	  }
-      if($p['hidetime']){
+      /*if($p['hidetime']){
                 $js .= ",timeFormat:''";
       }else{
                 $js .= ",timeFormat: 'HH:mm'";
-      }
+      }*/
 	  
       //if ($p['hideday']) {
 		//$js .= "}).next('.ui-datepicker-trigger').addClass('pointer').next('.ui-datepicker-calendar').attr('display','none');";
