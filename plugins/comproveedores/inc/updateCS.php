@@ -19,6 +19,7 @@ $id = $_GET['id'];
 $sql = "UPDATE glpi_plugin_comproveedores_cvs SET capital_social={$capital_social} ";
 $sql.=" WHERE id=".$id;
 $insert = $DB->query($sql);
-echo $sql;
+
+//echo "se ha actualizado el capital social";
 
 

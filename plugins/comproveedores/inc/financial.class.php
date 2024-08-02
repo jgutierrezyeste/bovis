@@ -516,7 +516,7 @@
                                         data: {'capital_social': cs, 'id': cvid},
                                         url:'".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/updateCS.php',  				
                                         success:function(data){
-                                            alert(data);
+                                            window.location.reload(true);
                                         },
                                         error: function(result) {
                                             alert('Error al actualizar el capital social.');

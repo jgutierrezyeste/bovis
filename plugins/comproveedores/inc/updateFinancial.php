@@ -51,4 +51,4 @@ $sql.=" WHERE id=".$id;
 $insert = $DB->query($sql);
 //echo $sql;
 
-
+//Html::footer();
