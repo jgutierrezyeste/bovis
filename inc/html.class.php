@@ -2888,7 +2888,10 @@ class Html {
                              trim(self::convDateTime($p['value']))."'";
       }*/
       /*nuevo*/
-
+if ($p['value']=='0000-00-00' || $p['value']==NULL)
+       $output .= "<input id='showdate".$p['rand']."' type='text' name='_$name' value='".
+                             ''."'";
+else
       $output .= "<input id='showdate".$p['rand']."' type='text' name='_$name' value='".
                              date("d-m-Y",strtotime($p['value']))."'";
 
