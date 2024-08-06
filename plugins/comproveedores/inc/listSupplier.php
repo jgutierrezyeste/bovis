@@ -72,15 +72,15 @@ LEFT JOIN  glpi_projects as proyectos on proyectos.id=paquetes.projects_id";
         $where.="UPPER(proveedores.name) LIKE UPPER('%".$_GET['nombre_proveedor']."%')";
     }
     if($_GET['cif']!=''){
-       if($where!='') {$where.=' or ';}
+       if($where!='') {$where.=' and ';}
         $where.=$where." trim(proveedores.cif) LIKE trim('%".$_GET['cif']."%')";
     }
     if($_GET['id_proyecto']!='' && $_GET['id_proyecto']>0){
-       if($where!='' && $where!='0') {$where.=' or ';}
+       if($where!='' && $where!='0') {$where.=' and ';}
        $where.=" proyectos.id=".$_GET['id_proyecto']." ";
     }
     if($_GET['codigo_proyecto']!=''){
-       if($where!='') {$where.=' or ';}
+       if($where!='') {$where.=' and ';}
        $where.=" proyectos.code LIKE'%".$_GET['codigo_proyecto']."%' ";
     }
     //$where.=" proveedores.is_deleted=0 ";
