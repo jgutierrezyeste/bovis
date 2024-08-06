@@ -31,7 +31,7 @@ $objCommonDBT=new CommonDBTM;
 	<div class='campo_busqueda'>Tipo de Servicio: <input type='text' id='tservicio' value='' /></div>
 	<div class='campo_busqueda'>Cliente: <input type='text' id='cliente' value='' /></div>
 	<div class='campo_busqueda'>
-		Coste: (mínimo)<input type='text' id='minima' readonly style='width:100px;'/> (máximo)<input type='text' id='maxima' readonly style='width:100px;'/>
+		Coste: (mínimo)<input type='text' id='minima' style='width:100px;'/> (máximo)<input type='text' id='maxima' style='width:100px;'/>
 		<div id='slider-facturacion' style='margin-top: 4px; margin-bottom: 4px;'></div>				
 	</div>
 	<input type='submit' name='search' value='BUSCAR' class='submit' style='margin: 5px; position:relative;' />";

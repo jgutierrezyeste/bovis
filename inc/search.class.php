@@ -182,13 +182,13 @@ class Search {
 		echo "</tr>";
 		echo "<tr>";		
 			echo "<td colspan='4' style='padding:4px;'>";
-			echo "Duración (mínima)<input type='text' id='duracionminima' readonly style='width:100px;'/> meses; (máximo)<input type='text' id='duracionmaxima' readonly style='width:100px;'/> meses ";
+			echo "Duración (mínima)<input type='text' id='duracionminima' style='width:100px;'/> meses; (máximo)<input type='text' id='duracionmaxima' style='width:100px;'/> meses ";
 			echo "<div id='slider-duracion' style='margin: 4px 15px;'></div>";
 			echo "</td>";
 		echo "</tr>";		
 		echo "<tr>";		
 			echo "<td colspan='4' style='padding:4px;'>";
-			echo "Coste (mínimo)<input type='text' id='minima' readonly style='width:100px;'/>€ (máximo)<input type='text' id='maxima' readonly style='width:100px;'/>€";
+			echo "Coste (mínimo)<input type='text' id='minima' style='width:100px;'/>€ (máximo)<input type='text' id='maxima' style='width:100px;'/>€";
 			echo "<div id='slider-facturacion' style='margin: 4px 15px;'></div>";
 			echo "</td>";
 		echo "</tr>";
