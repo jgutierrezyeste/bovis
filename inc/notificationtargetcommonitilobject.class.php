@@ -901,6 +901,13 @@ abstract class NotificationTargetCommonITILObject extends NotificationTarget {
                                                  $supplier->getField('suppliertypes_id'));
                }
 
+               $tmp['##proveedor.type##'] = '';
+               if ($supplier->getField('proveedortypes_id')) {
+                  $tmp['##proveedor.type##']
+                     = Dropdown::getDropdownName('glpi_proveedortypes',
+                                                 $supplier->getField('proveedortypes_id'));
+               }
+
                $data['suppliers'][] = $tmp;
             }
          }

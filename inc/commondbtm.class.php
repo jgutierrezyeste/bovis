@@ -460,6 +460,7 @@ class CommonDBTM extends CommonGLPI {
    **/
    function addToDB() {
       global $DB;
+      
 
       //unset($this->fields["id"]);
       $nb_fields = count($this->fields);
@@ -500,6 +501,8 @@ class CommonDBTM extends CommonGLPI {
 
          }
          $query .= ")";
+         
+         
 
          if ($result=$DB->query($query)) {
             // Already define for entity / insert_id does not work
@@ -858,6 +861,7 @@ class CommonDBTM extends CommonGLPI {
    **/
    function add(array $input, $options = [], $history = true) {
       global $DB, $CFG_GLPI;
+      
 
       if ($DB->isSlave()) {
          return false;
@@ -3364,6 +3368,8 @@ class CommonDBTM extends CommonGLPI {
     * @see https://glpi-developer-documentation.rtfd.io/en/master/devapi/search.html
    **/
    function getSearchOptions() {
+      
+
       $options = [];
 
       foreach ($this->getSearchOptionsNew() as $opt) {
@@ -3387,6 +3393,7 @@ class CommonDBTM extends CommonGLPI {
 
          foreach ($opt as $k => $v) {
             $options[$optid][$k] = $v;
+            
          }
       }
 

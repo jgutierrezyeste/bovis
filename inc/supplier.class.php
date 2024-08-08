@@ -251,9 +251,9 @@ Incorrecto:0     -1      -2      -3
         $opt6['comments']       = false;
         $opt6['addicon']        = false;
         $opt6['width']          = '203px';
-        //$opt6['value']          = $this->fields["plugin_comproveedores_ambitos_id"];        
+        //$opt6['value']          = $this->fields["plugin_comproveedores_ambitos_id"];      
 
-         
+        
         echo "<tr class='tab_bg_1'>";
               echo "<td rowspan='9'><img src='../pics/boton_proveedor_grande.png' style='margin-right: 40px;width: 100px;'/></td>";
               echo "<td>". __('CIF/NIF')."(*)</td>";
@@ -270,9 +270,13 @@ Incorrecto:0     -1      -2      -3
         echo "</tr>";
         echo "<tr class='tab_bg_1'>";
               echo "<td>".__('Name')." / Empresa</td>";
-              echo "<td colspan='3'>";
+              echo "<td colspan='2'>";
               Html::autocompletionTextField($this, "name", ['style' => 'width:400px;']);
-              echo "</td>";        
+              echo "</td>";    
+              echo "<td>".__('Tipo')."</td>";
+              echo "<td>";
+              ProveedorType::dropdown(['value' => $this->fields["proveedortypes_id"]]);
+              echo "</td>";    
         echo "</tr>";              
         echo "<tr class='tab_bg_1'>";
               echo "<td>". __('Phone')."</td>";
@@ -360,6 +364,8 @@ Incorrecto:0     -1      -2      -3
 
         
         echo "<script type='text/javascript'>
+
+                
 
                 if({$opcion} == 0){
                     $('.boton_grabar').css('display', 'none');
@@ -628,6 +634,17 @@ Incorrecto:0     -1      -2      -3
          'name'               => __('Third party type'),
          'datatype'           => 'dropdown'
       ];
+
+/*añado aqui para nuestro tipo*/
+      $tab[] = [
+         'id'                 => '200',
+         'table'              => 'glpi_proveedortypes',
+         'field'              => 'name',
+         'name'               => __('Proveedor Type'),
+         'datatype'           => 'dropdown'
+      ];
+
+/*hasta aqui*/
 
       $tab[] = [
          'id'                 => '19',

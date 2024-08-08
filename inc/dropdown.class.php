@@ -904,6 +904,9 @@ class Dropdown {
                  'SupplierType'         => _n('Third party type',
                                               'Third party types',
                                               Session::getPluralNumber()),
+                 'ProveedorType'         => _n('Proveedor Type',
+                                              'Proveedors Types',
+                                              Session::getPluralNumber()),
                  'InterfaceType'        => _n('Interface type (Hard drive...)',
                                               'Interface types (Hard drive...)',
                                               Session::getPluralNumber()) ,
@@ -1850,7 +1853,6 @@ class Dropdown {
     *                                'key4' => 'val4'))
    **/
    static function showFromArray($name, array $elements, $options = []) {
-
       $param['value']               = '';
       $param['values']              = [''];
       $param['tooltip']             = '';
@@ -1913,6 +1915,7 @@ class Dropdown {
             $output .= "<input type='hidden' name='$field_name' value='$value'>";
             if (isset($elements[$value])) {
                $to_display[] = $elements[$value];
+               
             }
          }
          $output .= implode('<br>', $to_display);

@@ -242,7 +242,11 @@ Incorrecto:0     -1      -2      -3
               echo "<td>".__('Name')." / Empresa</td>";
               echo "<td colspan='3'>";
               Html::autocompletionTextField($this, "name", ['style' => 'width:400px;']);
-              echo "</td>";        
+              echo "</td>"; 
+              echo "<td>".__('Tipo')."</td>";
+              echo "<td>";
+              ProveedorType::dropdown(['value' => $this->fields["proveedortypes_id"]]);
+              echo "</td>";       
         echo "</tr>";              
         echo "<tr class='tab_bg_1'>";
               echo "<td>". __('Phone')."</td>";
@@ -328,6 +332,8 @@ Incorrecto:0     -1      -2      -3
 
         
         echo "<script type='text/javascript'>
+
+               
 
                 function validateCIF(cif)
                 {
@@ -469,6 +475,13 @@ Incorrecto:0     -1      -2      -3
         return true;
    }
 
+function getTipos(){
+            $tipos = array('Contratista',
+                'Consultor'
+                );
+            
+            return $tipos;
+    }
 
    /**
     * @see CommonDBTM::getSpecificMassiveActions()
@@ -591,6 +604,17 @@ Incorrecto:0     -1      -2      -3
          'name'               => __('Third party type'),
          'datatype'           => 'dropdown'
       ];
+
+/*añado aqui para nuestro tipo*/
+      $tab[] = [
+         'id'                 => '200',
+         'table'              => 'glpi_proveedortypes',
+         'field'              => 'name',
+         'name'               => __('Proveedor Type'),
+         'datatype'           => 'dropdown'
+      ];
+
+/*hasta aqui*/
 
       $tab[] = [
          'id'                 => '19',

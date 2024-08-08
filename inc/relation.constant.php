@@ -568,6 +568,9 @@ $RELATION = ["glpi_authldaps"
                         "glpi_suppliertypes"
                         => ['glpi_suppliers' => 'suppliertypes_id'],
 
+                        "glpi_proveedortypes"
+                        => ['glpi_suppliers' => 'proveedortypes_id'],
+
                         "glpi_taskcategories"
                         => ['glpi_changetasks'    => 'taskcategories_id',
                             'glpi_problemtasks'   => 'taskcategories_id',
