@@ -9,8 +9,8 @@ ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
 
-INSERT INTO `bovis`.`glpi_proveedortypes` (`nombre`) VALUES ('Contratista');
-INSERT INTO `bovis`.`glpi_proveedortypes` (`nombre`) VALUES ('Consultor');
+INSERT INTO `bovis`.`glpi_proveedortypes` (`name`) VALUES ('Contratista');
+INSERT INTO `bovis`.`glpi_proveedortypes` (`name`) VALUES ('Consultor');
 
 UPDATE `bovis`.`glpi_suppliers` SET `date_mod` = '1970-01-01' WHERE (DATE_FORMAT(date_mod, '%Y-%m-%d') = '0000-00-00');
 
