@@ -1528,7 +1528,7 @@ class Html {
       echo "<body class='$body_class'>";
 
       echo "<div id='header'>";
-      echo "<div id='header_top' style='background-color:  white; height: 50%;background-image: url({$CFG_GLPI["root_doc"]}/pics/cuadros_fondo.jpg);background-position: right;background-repeat: no-repeat;'>";
+      echo "<div id='header_top' style='background-color:  green; height: 50%;background-position: right;background-repeat: no-repeat;'>";
       echo "<div id='c_logo' style='margin-left: 10px; width: 150px;'>";
       echo Html::link('', $CFG_GLPI["root_doc"]."/front/central.php",
                       ['accesskey' => '1',
@@ -1754,8 +1754,8 @@ class Html {
       echo "<body class='$body_class'>";
 
       // Main Headline
-      echo "<div id='header'>";
-      echo "<div id='header_top'>";
+      echo "<div id='header' >";
+      echo "<div id='header_top' >";
 
       echo "<div id='c_logo'>";
       echo "<a href='".$CFG_GLPI["root_doc"]."/front/helpdesk.public.php' accesskey='1' title=\"".
@@ -6315,7 +6315,7 @@ else
       $already_used_shortcut = ['1'];
 
       
-        echo "<div id='c_menu'>";
+        echo "<div id='c_menu' style='background-color:green'>";
                 echo "<ul id='menu'";
                 if ($full === true) {
                    echo " class='fullmenu'";
