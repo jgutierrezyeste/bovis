@@ -270,12 +270,12 @@ Incorrecto:0     -1      -2      -3
         echo "</tr>";
         echo "<tr class='tab_bg_1'>";
               echo "<td>".__('Name')." / Empresa</td>";
-              echo "<td colspan='2'>";
+              echo "<td >";
               Html::autocompletionTextField($this, "name", ['style' => 'width:400px;']);
               echo "</td>";    
               echo "<td>".__('Tipo')."</td>";
               echo "<td>";
-              ProveedorType::dropdown(['value' => $this->fields["proveedortypes_id"]]);
+              ProveedorType::dropdown(['value' => $this->fields["proveedortypes_id"],'width' => '100px']);
               echo "</td>";    
         echo "</tr>";              
         echo "<tr class='tab_bg_1'>";
