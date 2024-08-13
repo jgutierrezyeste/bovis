@@ -32,7 +32,8 @@ if ($_GET['supplier_id']) {
     $supplier_id = '0';
 }
 
-
+/*¿¿adjudicado??*/
+$adjudicado=0;
 
 $profileID = 0;
 $USERID = $_SESSION['glpiID'];
@@ -102,6 +103,7 @@ $resultPreseleccionados = $DB->query($queryPreseleccionados);
 
 echo "<table id='tblLicitadores' class='display compact' style='width:100%; float:left; position: relative;'>";
 echo "<thead>";
+echo "<tr>";
 
     echo "<th>licitador</th>";
     echo "<th>cif/nif</th>";
@@ -110,8 +112,8 @@ echo "<thead>";
     echo "<th>comentarios</th>";
     echo "<th style='width: 100px;'>adjudicatario</th>";
     if($ver && $nombre_adjudicatario == ''){
-        echo "<th style='width: 100px;'>editar</th>";                
-        echo "<th style='width: 100px;'>quitar</th>";     
+        echo "<th></th>";                
+        echo "<th></th>";     
     }           
 echo "</tr>";
 echo "</thead>";
@@ -126,15 +128,15 @@ echo "<tbody>";
         echo    $data['cif_nif'];
         echo "</td>";
         if($ver){
-            if (!$data['importe_ofertado']){
-                    echo "<td id='importe_".$data['licitador_id']."' class='columna' style='text-align:center;'> - </td>";
+            if ($data['importe_ofertado'] == "NULL"){
+                    echo "<td id='importe_".$data['licitador_id']."' class='columna' style='text-align:center;'>".' '."</td>";
             }else{
                     echo "<td id='importe_".$data['licitador_id']."' class='columna'>".number_format($data['importe_ofertado'],2,',','.')." </td>";
             }	
         }
-        if (!$data['calidad_oferta']){					
+        if (!$data['calidad_oferta'] OR $data['calidad_oferta']=="NULL"){					
                 echo "<td id='calidad_".$data['licitador_id']."' class='columna' style='text-align:center; width: 100px;'>";
-                echo    "<input id='oculto_calidad_".$data['licitador_id']."' value='".$data['calidad_oferta']."' type='hidden' />";
+                echo    "<input id='oculto_calidad_".$data['licitador_id']."' value=' ".$data['calidad_oferta']."' type='hidden' />";
                 echo "</td>";		
         }else{
                 echo "<td id='calidad_".$data['licitador_id']."' class='columna' style='font-size: 10px; color: #777; text-align:center; width: 100px;"
@@ -145,9 +147,11 @@ echo "<tbody>";
                 echo "</td>";								
         }
         echo "<td id='comentario_".$data['licitador_id']."' class='columna' style='text-align:left;'>".$data['comentarios']."</td>";
+
         echo "<td style='text-align:center; width: 100px;' class='columnaCHK' >";
             echo "<input type='hidden' id='supplier_id_".$data['licitador_id']."' value='".$data['suppliers_id']."' />";
             if($data['adjudicatario']==1){
+                    $adjudicatario=1;
                     echo "<image src='".$CFG_GLPI["root_doc"]."/pics/ok.png' title='adjudicatario' style='width:20px;height:20px;'/>";
             }else{
                     if($nombre_adjudicatario==''){
@@ -161,27 +165,20 @@ echo "<tbody>";
         if($ver && $nombre_adjudicatario == ''){ 
             echo "<td><input id='editarLicitadores_{$data['licitador_id']}' class='boton_editar_licitadores' type='submit' value='' title='editar elemento'/></td>";
             echo "<td><input id='quitarLicitadores_{$data['licitador_id']}' type='submit' value=' ' class='boton_borrar_licitadores' style='background-size:15px; width:20px; height:20px;border-radius:2px;'/></td>";
+
         }
+        
         echo "</tr>";
     }	
-//}else{
-//    echo "<tr>";
-//        echo "<td></td>";
-//        echo "<td></td>";
-//        echo "<td></td>";
-//        echo "<td></td>";
-//        echo "<td></td>";		
-//        echo "<td></td>";
-//        echo "<td></td>";	
-//        if($ver && $nombre_adjudicatario != ''){ 
-//            echo "<td></td>";
-//            echo "<td></td>";			
-//        }
-//    echo "</tr>";
-//}
+
+
+
 echo "</tbody>";
 echo "</table>";
-
+if( $adjudicatario == 1)
+    {   
+        echo "<input type='button' id='modificarAdjudicatario' value='Modificar Adjudicacion'/> ";
+    }
 
 echo "<div id='dialogo' title='Edición de Licitador'>
 
@@ -280,6 +277,7 @@ buttons: {
         var importe = $('#txt_importe_lic').val().replace(' ','').replace('€', '').replace('.','').replace(',','');
         var calidad = $('#valor').val();
         var comentarios = $('#txt_comentarios_lic').val();
+        
         $.ajax({ 
                 async: false, 
                 type: 'GET',
@@ -433,7 +431,30 @@ if(".$projecttasks_id.">0 && idadj>0){
 }else{
         alert('No se ha registra un contrato o proveedor.');
 }
-});			
+});	
+
+
+/*recargamos lista de licitadores para modificar adjudicatario*/
+
+$('#modificarAdjudicatario').on('click', function(){
+    var idprojecttask = ".$projecttasks_id.";
+    
+$.ajax({ 
+                    async: false, 
+                    type: 'GET',
+                    data: {'projecttasks_id':idprojecttask },                  
+                    url: '".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/updateLicitadores.php',                
+                    success:function(data){
+                           
+                             
+                             $('#page').html(data);
+                        },
+                        error: function(result) {
+                            alert('Data not found: ".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/updateLicitadores.php');
+                        }
+                });  
+
+}); 		
 
 </script>";			
 
