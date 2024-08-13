@@ -177,7 +177,7 @@ echo "</tbody>";
 echo "</table>";
 if( $adjudicatario == 1)
     {   
-        echo "<input type='button' id='modificarAdjudicatario' value='Modificar Adjudicacion'/> ";
+        echo "<input style='height:50px; width:150px; font-size:18px' type='button' id='modificarAdjudicatario' value='Editar licitacion'/> ";
     }
 
 echo "<div id='dialogo' title='Edición de Licitador'>
