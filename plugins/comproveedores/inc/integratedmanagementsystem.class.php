@@ -122,7 +122,7 @@
                 $user_Id             = $_SESSION['glpiID'];
                 $profile_Id          = $self->getProfileByUserID($user_Id);
                 $ver                 = true;
-                if(in_array($profile_Id, array(3,4,14,16))){    
+                if(in_array($profile_Id, array(3,4,14,16,9))){    
                     $ver = true;
                 }else{
                     $ver = false;
@@ -514,6 +514,7 @@
                         }
 
                         $('#grabar').on('click', function(){
+
                             var id = $('#idIMS').val();     
                             var cvid = $('#cv_id').val();
 
@@ -769,7 +770,7 @@
                             }                            
                         });
 
-                        if((profile!=16) && (profile!=3) && (profile!=14) && (profile!=4)){
+                        if((profile!=16) && (profile!=3) && (profile!=14) && (profile!=4) && (profile!=9)){
                             $('.chkProp').prop('disabled', 'true');
                             $('.boton_borrar').css('display', 'none');
                             $('.boton_add').css('display', 'none');

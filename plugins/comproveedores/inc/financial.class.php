@@ -101,7 +101,7 @@
                         $self = new self();
                         $profile_Id=$self->getProfileByUserID($USERID);
                         $ver = true;
-                        if(in_array($profile_Id, array(3,4,14,16))){    
+                        if(in_array($profile_Id, array(3,4,14,16,9))){    
                             $ver = true;
                             echo "<input type='hidden' id='ver' value='1' />";
                         }else{
@@ -477,7 +477,7 @@
                             $('#capital_social').val(formateaNumero(num));
 
                             
-                            if(({$profile_Id} != 16) && ({$profile_Id} != 3) && ({$profile_Id} != 4) && ({$profile_Id} != 14)){
+                            if(({$profile_Id} != 16) && ({$profile_Id} != 3) && ({$profile_Id} != 4) && ({$profile_Id} != 14) ({$profile_Id} != 9)){
                                 $('.chkProp').prop('disabled', 'true');
                                 $('.boton_borrar').css('display', 'none');
                                 $('.boton_add').css('display', 'none');
