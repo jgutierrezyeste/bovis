@@ -188,7 +188,7 @@ echo "<tr>";
 
     echo "<th>licitador</th>";
     echo "<th>cif/nif</th>";
-    if($ver){echo "<th>importe ofertado (miles €)</th>";}
+    if($ver){echo "<th>importe ofertado </th>";}
     echo "<th style='width: 100px;'>calidad oferta</th>";
     echo "<th>comentarios</th>";
     echo "<th style='width: 100px;'>adjudicatario</th>";
@@ -276,7 +276,7 @@ echo "<div id='dialogoModificar' title='Edición de Licitador'>
         <td>nombre del licitador:</td><td><input type='text' id='txt_nombreModificar_lic' value='' style='width:300px;' readonly/></td>
     </tr>			
     <tr style='height:50px;'>
-        <td>importe ofertado:</td><td><input id='txt_importeModificar_lic' type='text' value='' /> miles €</td>
+        <td>importe ofertado:</td><td><input id='txt_importeModificar_lic' type='text' value='' /> €</td>
     </tr>
     <tr style='height:50px;'>
         <td>comentarios:</td><td><textarea id='txt_comentariosModificar_lic' value='' cols='50' rows='4'/></td>

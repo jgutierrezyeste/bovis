@@ -180,9 +180,9 @@ class PluginComproveedoresHistory extends CommonDBTM{
                 echo "<th>CONTRATO</th>";
                 echo "<th>COMIENZO</th>";
                 echo "<th>FIN</th>";
-                if(in_array($profile_Id, array(3,4,16))){echo "<th>PRESUPUESTO OBJETIVO<br>(miles €)</th>";}
-                if(in_array($profile_Id, array(3,4,16))){echo "<th>IMPORTE OFERTADO<br>(miles €)</th>";}
-                if(in_array($profile_Id, array(3,4,16))){echo "<th>IMPORTE DE ADJUDICACIÓN<br>(miles €)</th>";}           
+                if(in_array($profile_Id, array(3,4,16))){echo "<th>PRESUPUESTO OBJETIVO<br>(€)</th>";}
+                if(in_array($profile_Id, array(3,4,16))){echo "<th>IMPORTE OFERTADO<br>(€)</th>";}
+                if(in_array($profile_Id, array(3,4,16))){echo "<th>IMPORTE DE ADJUDICACIÓN<br>(€)</th>";}           
                 echo "<th>CALIDAD OFERTA</th>";
                 //echo "<th>CALIDAD OFERTA GANADOR</th>";
                 echo "<th>COMENTARIOS</th>";

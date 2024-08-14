@@ -382,7 +382,7 @@ if($fase<8){
         $html.= "<th>PROVEEDOR</th>";
         if($fase==1){$html.= "<th>CATEGORÍAS</th>";}
         if($fase==1){$html.= "<th>ESPECIALIDADES</th>";}
-        $html.= "<th>FACTURACIÓN (miles €)</th>";                    
+        $html.= "<th>FACTURACIÓN (€)</th>";                    
         $html.= "<th>CV</th>";
         $html.= "<th title='¿Ha participado con BOVIS en algún proyecto?'>Experiencia con BOVIS</th>";
 

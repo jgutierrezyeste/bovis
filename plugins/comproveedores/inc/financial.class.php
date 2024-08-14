@@ -221,7 +221,7 @@
                             echo"<td class='left'>";
                             //Html::autocompletionTextField($this, "capital_social", array('value'=>$capital_social));
                             echo "<input id='capital_social' class='inputModal' value='{$capital_social}' />";
-                            echo " miles €</td>";
+                            echo " €</td>";
                             echo "<td class='right' style='width: 100px;'>";
                             echo "<input id='grabarCapitalSocial' type='submit' class='boton_grabar' title='Grabar' value='' />";                            
                             echo "</td>";                                                        
@@ -249,15 +249,15 @@
                                     echo "<th></th>";
                                     echo "<th></th>";
                                     echo "<th>Año</th>";
-                                    echo "<th title='facturación'>Fact. (miles €)</th>";
-                                    echo "<th title='beneficions antes de impuestos'>Beneficios AI (miles €)</th>";
-                                    echo "<th title='resultado'>Res. (miles €)</th>";
-                                    echo "<th title='total activo'>Tot. Activo (miles €)</th>";
-                                    echo "<th title='activo circulante'>Act. circ. (miles €)</th>";
-                                    echo "<th title='pasivo circulante'>Pas. circ. (miles €)</th>";
-                                    echo "<th title='cash flow al final del ejercicio'>Cash flow (miles €)</th>";
-                                    echo "<th title='recursos ajenos'>Rec. ajenos (miles €)</th>";
-                                    echo "<th title='fondos propios'>Fondos prop. (miles €)</th>";    
+                                    echo "<th title='facturación'>Fact. (€)</th>";
+                                    echo "<th title='beneficions antes de impuestos'>Beneficios AI (€)</th>";
+                                    echo "<th title='resultado'>Res. (€)</th>";
+                                    echo "<th title='total activo'>Tot. Activo (€)</th>";
+                                    echo "<th title='activo circulante'>Act. circ. (€)</th>";
+                                    echo "<th title='pasivo circulante'>Pas. circ. (€)</th>";
+                                    echo "<th title='cash flow al final del ejercicio'>Cash flow (€)</th>";
+                                    echo "<th title='recursos ajenos'>Rec. ajenos (€)</th>";
+                                    echo "<th title='fondos propios'>Fondos prop. (€)</th>";    
                                     if($ver){
                                         echo "<th title='apalancamiento'>Apa.</th>";                                    
                                         echo "<th title='margen de beneficios'>Margen</th>";
@@ -405,7 +405,7 @@
                                     echo "</td>";                            
                             }
                             echo "</tr>";
-                            echo "<tr style='font-size: 16px; color: #0e52a0; '><td colspan='2' class='center' style='font-weight: bold; padding: 4px;'>ANUALIDAD MEDIA MÁXIMA = ".number_format($aam,2,',','.')." miles €</td></tr>";                        
+                            echo "<tr style='font-size: 16px; color: #0e52a0; '><td colspan='2' class='center' style='font-weight: bold; padding: 4px;'>ANUALIDAD MEDIA MÁXIMA = ".number_format($aam,2,',','.')." €</td></tr>";                        
                             echo "</table>";
                             echo "</div>";
                         }
@@ -417,23 +417,23 @@
                             echo "<table>";
                             echo "<tr class='tab_bg_1'>";
                                 echo "<td class='right'>Año:</td><td><input type='text' class='inputModal' value='' id='anio'>";
-                                echo "<td class='right'>Resultado:</td><td><input type='text' class='inputModal' value='' id='resultado'> miles €</td>";                      
+                                echo "<td class='right'>Resultado:</td><td><input type='text' class='inputModal' value='' id='resultado'> €</td>";                      
                             echo "</tr>";
                             echo "<tr class='tab_bg_1'>";
-                                echo "<td class='right'>Facturación:</td><td><input type='text' class='inputModal' value='' id='facturacion'> miles €</td>";
-                                echo "<td class='right'>Beneficios AI:</td><td><input type='text' class='inputModal' value='' id='beneficiosai'> miles €</td>";
+                                echo "<td class='right'>Facturación:</td><td><input type='text' class='inputModal' value='' id='facturacion'> €</td>";
+                                echo "<td class='right'>Beneficios AI:</td><td><input type='text' class='inputModal' value='' id='beneficiosai'> €</td>";
                             echo "</tr>";                          
                             echo "<tr class='tab_bg_1'>";                                 
-                                echo "<td class='right'>Cash Flow al final del ejercicio:</td><td><input type='text' class='inputModal' value='' id='cashflow'> miles €</td>";
-                                echo "<td class='right'>Total Activo:</td><td><input type='text' class='inputModal' value='' id='totalactivo'> miles €</td>";                            
+                                echo "<td class='right'>Cash Flow al final del ejercicio:</td><td><input type='text' class='inputModal' value='' id='cashflow'> €</td>";
+                                echo "<td class='right'>Total Activo:</td><td><input type='text' class='inputModal' value='' id='totalactivo'> €</td>";                            
                             echo "</tr>";                        
                             echo "<tr class='tab_bg_1'>";                            
-                                echo "<td class='right'>Activo Circulante:</td><td><input type='text' class='inputModal' value='' id='activocirculante'> miles €</td>";
-                                echo "<td class='right'>Pasivo Circulante:</td><td><input type='text' class='inputModal' value='' id='pasivocirculante'> miles €</td>";                            
+                                echo "<td class='right'>Activo Circulante:</td><td><input type='text' class='inputModal' value='' id='activocirculante'> €</td>";
+                                echo "<td class='right'>Pasivo Circulante:</td><td><input type='text' class='inputModal' value='' id='pasivocirculante'> €</td>";                            
                             echo "</tr>";                            
                             echo "<tr class='tab_bg_1'>";                            
-                                echo "<td class='right'>Fondos Ajenos:</td><td><input type='text' class='inputModal' value='' id='fondosajenos'> miles €</td>";
-                                echo "<td class='right'>Fondos Propios:</td><td><input type='text' class='inputModal' value='' id='fondospropios'> miles €</td>";                            
+                                echo "<td class='right'>Fondos Ajenos:</td><td><input type='text' class='inputModal' value='' id='fondosajenos'> €</td>";
+                                echo "<td class='right'>Fondos Propios:</td><td><input type='text' class='inputModal' value='' id='fondospropios'> €</td>";                            
                             echo "</tr>";                                               
                             echo "</table>";   
                         echo "</div>";

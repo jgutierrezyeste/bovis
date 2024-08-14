@@ -150,7 +150,7 @@
                                    $proveedor_seleccionado = 0;
                                    echo "<table style='width: 40%; margin-bottom: 15px; margin-top: 8px; margin-left: 30%; padding: 5px; border-radius: 4px; background-color: #f8f7f3;   -webkit-box-shadow: 12px 8px 5px -5px rgba(219,219,219,1);    -moz-box-shadow: 12px 8px 5px -5px rgba(219,219,219,1);    box-shadow: 12px 8px 5px -5px rgba(219,219,219,1);'>";                                    
                                    echo "<tr style='font-size: 12px; font-weight: bold;'>";
-                                            echo "<td colspan='3' class='center' style='padding-right: 20px;'>PRESUPUESTO OBJETIVO (miles €): ".number_format($valor_contrato, 0, ',', '.')." € TIPO: ".$nombre_especialidad."</td>";
+                                            echo "<td colspan='3' class='center' style='padding-right: 20px;'>PRESUPUESTO OBJETIVO (€): ".number_format($valor_contrato, 0, ',', '.')." € TIPO: ".$nombre_especialidad."</td>";
                                     echo "</tr>";
                                     echo "<tr>";
                                             echo "<td class='right'>NOMBRE :</td>";

@@ -547,7 +547,7 @@ class ProjectTask extends CommonDBChild {
          $valor_contrato=number_format($this->fields['valor_contrato'], 0, '', '.');
       }else{$valor_contrato='0';}
       Html::autocompletionTextField($this, "valor_contrato", ['rand' => $rand_valor_contrato, 'width' => '80']);
-      echo " miles €</td>";
+      echo "  €</td>";
 
       echo "<script type='text/javascript'>
           
@@ -965,7 +965,7 @@ class ProjectTask extends CommonDBChild {
                   echo "<input id='nuevoContrato' type='submit' title='NUEVO CONTRATO' class='boton_add_contrato' value='' style='float:left; margin-left: 2em;' />";
               }
               //"<a href='".Toolbox::getItemTypeFormURL('ProjectTask')."?projecttasks_id=$ID&amp;projects_id=$projet'>"
-              echo "Importe del proyecto = ".number_format($importe_proyecto,0,'','.')." miles €"; 
+              echo "Importe del proyecto = ".number_format($importe_proyecto,0,'','.')." €"; 
           echo "</div>";
         }
 
@@ -1047,8 +1047,8 @@ class ProjectTask extends CommonDBChild {
                 echo "<th>NOMBRE</th>";
                 echo "<th>CÓDIGO</th>";
                 echo "<th>TIPO</th>";
-                if($ver){echo "<th>PPTO. OBJETIVO (miles €)</th>";}
-                if($ver){echo "<th>IMPORTE ADJUDICACIÓN (miles €)</th>";}
+                if($ver){echo "<th>PPTO. OBJETIVO (€)</th>";}
+                if($ver){echo "<th>IMPORTE ADJUDICACIÓN (€)</th>";}
                 echo "<th>PROVEEDOR</th>";
                 echo "<th>CIF</th>";
                 echo "<th>INICIO</th>";

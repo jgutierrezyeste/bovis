@@ -353,7 +353,7 @@
                         echo "<td style='vertical-align: bottom;'>" . __('Cliente') . "</td>";
                         echo "<td style='vertical-align: bottom;'>" . __('Año') . "</td>";
                         echo "<td style='vertical-align: bottom;'>" . __('Ubicación') . "</td>";
-                        echo "<td style='vertical-align: bottom;'>" . __('Importe (miles €)') . "</td>";
+                        echo "<td style='vertical-align: bottom;'>" . __('Importe (€)') . "</td>";
                             echo Html::hidden("<td>" . __('Cpd Tier') . "</td>");
                         echo "<td colspan='5' style='vertical-align: bottom;'>" . __('Observaciones') . "</td>";
                     echo "</tr>";
