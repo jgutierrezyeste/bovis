@@ -477,7 +477,7 @@
                             $('#capital_social').val(formateaNumero(num));
 
                             
-                            if(({$profile_Id} != 16) && ({$profile_Id} != 3) && ({$profile_Id} != 4) && ({$profile_Id} != 14) ({$profile_Id} != 9)){
+                            if(({$profile_Id} != 16) && ({$profile_Id} != 3) && ({$profile_Id} != 4) && ({$profile_Id} != 14) && ({$profile_Id} != 9)){
                                 $('.chkProp').prop('disabled', 'true');
                                 $('.boton_borrar').css('display', 'none');
                                 $('.boton_add').css('display', 'none');
