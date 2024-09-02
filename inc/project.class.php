@@ -187,6 +187,8 @@ class Project extends CommonDBTM {
 
       $ong = [];
       $this->addDefaultFormTab($ong);
+      //$this->addStandardTab('Document_Item', $ong, $options);
+
       $this->addStandardTab('ProjectTeam', $ong, $options);      
       $this->addStandardTab('ProjectTask', $ong, $options);
       $this->addStandardTab('PluginComproveedoresValuation', $ong, $options);      

@@ -178,7 +178,36 @@ echo "</table>";
 if( $adjudicatario == 1)
     {   
         echo "<input style='height:50px; width:150px; font-size:18px' type='button' id='modificarAdjudicatario' value='Editar licitacion'/> ";
+        /*echo "<input style='height:50px; width:150px; font-size:18px' type='button' id='comparativo' value='Comparativo'/> ";*/
+        /*echo "<a href='".$CFG_GLPI['root_doc'].
+                   "/inc/document_item.php' class='edit_document fa fa-eye pointer' title='".
+                   _sx("button", "Show")."'>";*/
+        /*echo "<form method='post' action='".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/insertArchivoComparativo.php' enctype='multipart/form-data'>
+                <input type='file' name='archivo' id='archivo'/>
+                <input type='submit' value='enviar'/>
+                </form>";*/
+                
     }
+
+
+/*echo "<div id='dialogoArchivo' title='Añadir comparativo'>
+                
+              
+                     
+                    
+                        <form method ='POST' action='".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/insertArchivoComparativo.php' enctype='multipart/form-data' >
+
+
+                            <input type='file' id='archivo' name='archivo'/>
+                            <input type='submit' value='enviar fichero' />
+
+                        </form>
+                           
+                
+              
+
+        </div>";
+*/
 
 echo "<div id='dialogo' title='Edición de Licitador'>
 
@@ -219,6 +248,8 @@ echo "<div id='dialogoBorrado' title='Quitar Licitador'>
     </table>
     <input id='quitarIdLicitador' type='hidden' value='' />
 </div>";
+
+
 echo "<div id='dialogoAdjudicatario' title='Adjudicar licitador'>
 <table>
 <tr>
@@ -265,6 +296,8 @@ if(ver == 1){
     });        
 }
 
+
+
 $('#dialogo').dialog({
 autoOpen: false,
 height: 370,
@@ -305,6 +338,51 @@ close: function() {
     $('#dialogo').dialog('close');
 }
 });
+
+
+/*dialogo para insertar documento*/
+
+/*$('#dialogoArchivo').dialog({
+    autoOpen:false,
+    height:200,
+    modal:true,
+    buttons: {
+    'Aceptar': function() { 
+       
+        var idprojecttask = $('#file_projecttask_id').val();
+        var comparativo = '".$_FILES['archivo']."';
+        alert (comparativo);
+        $.ajax({ 
+                async: false, 
+                type: 'POST',
+                data: {  
+                       'idprojecttask':idprojecttask,
+                       'comparativo':comparativo 
+                       
+                      },                  
+                url:'".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/insertArchivoComparativo.php',                  
+                success:function(data){
+                        //window.location.reload(true);
+                },
+                error: function(result) {
+                        alert('Data not found: ".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/listLicitadores.php');
+                }
+        });         
+                     
+
+        $('#dialogoArchivo').dialog('close');
+    },
+    'Cancelar': function() {
+      $('#dialogoArchivo').dialog('close');
+    }
+},
+close: function() {
+    $('#dialogoArchivo').dialog('close');
+}
+    
+});*/
+
+/*fin dialogo para añadir comparativo*/
 
 $('#dialogoAdjudicatario').dialog({
 autoOpen: false,
@@ -455,6 +533,15 @@ $.ajax({
                 });  
 
 }); 		
+
+/*$('#comparativo').on('click', function(){
+    var idprojecttask = ".$projecttasks_id.";
+     $('#dialogoArchivo').dialog('open');
+
+
+                
+
+});*/         
 
 </script>";			
 

@@ -210,6 +210,8 @@ class ProjectTask extends CommonDBChild {
       $this->addStandardTab('PluginComproveedoresValuation', $ong, $options);       
       //$this->addStandardTab('ProjectTask_Ticket', $ong, $options);      
       $this->addStandardTab('PluginComproveedoresSubpaquete', $ong, $options);
+      $this->addStandardTab('Document_Item', $ong, $options);
+      
       //$this->addStandardTab('ProjectTaskTeam', $ong, $options);
       //$this->addStandardTab('Notepad', $ong, $options);
       $this->addStandardTab('Log', $ong, $options);
