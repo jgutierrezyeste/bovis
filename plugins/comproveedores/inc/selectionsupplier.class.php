@@ -135,7 +135,7 @@
 			inner join glpi_suppliers as s on s.id = t.items_id
 			and t.items_id = p.suppliers_id
 			/*añadimos la condicion de que la empresa no se encuentre eliminada */
-			WHERE t.projecttasks_id=$projecttasks_id and s.is_deleted= 0" ;
+			WHERE t.projecttasks_id=$projecttasks_id and s.is_deleted= 0 and p.is_deleted=0" ;
 		
 			//echo $query;
 		   
