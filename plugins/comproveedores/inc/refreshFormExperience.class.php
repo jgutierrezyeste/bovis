@@ -139,7 +139,7 @@ GLOBAL $DB,$CFG_GLPI;
 			
 			echo "<td style='font-weight:bold; background-color:#E6E6E6; border-top: 2px solid #BDBDBD; border-right: 2px solid #BDBDBD;'>" . __('Año') . "</td>";
 			
-			echo "<td style='font-weight:bold; background-color:#E6E6E6; border-top: 2px solid #BDBDBD; border-right: 2px solid #BDBDBD;'>" . __('CCAA') . "</td>";
+			echo "<td style='font-weight:bold; background-color:#E6E6E6; border-top: 2px solid #BDBDBD; border-right: 2px solid #BDBDBD;'>" . __('Ubicación') . "</td>";
 
 			echo "<td style='font-weight:bold; background-color:#E6E6E6; border-top: 2px solid #BDBDBD; border-right: 2px solid #BDBDBD;'>" . __('Importe') . "</td>";
 

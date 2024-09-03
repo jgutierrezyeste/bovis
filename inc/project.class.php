@@ -1200,7 +1200,7 @@ class Project extends CommonDBTM {
       //Html::showDateTimeField("plan_start_date", ['value' => $this->fields['plan_start_date'], 'hidetime' => true], 1);
       echo "</td>";
       
-      echo "<td>Ubicación (CA)</td>";
+      echo "<td>Ubicación </td>";
       echo "<td>";
       Dropdown::show('PluginComproveedoresCommunity',$opt3);
       echo "</td>";
@@ -1217,7 +1217,7 @@ class Project extends CommonDBTM {
         Html::showDateMounth("plan_end_date", $this->fields['plan_end_date'], 1997, 2100, '', true);
       echo "</td>";
      
-       echo "<td>Ubicación (PROV)</td>";
+       echo "<td>Provincia</td>";
         echo "<td>";
                 echo "<div id='id_provincia'>";
                         echo "<span class='no-wrap'><div class='select2-container'><a class='select2-choice'><span class='select2-chosen'>------</span></a></div></span>";

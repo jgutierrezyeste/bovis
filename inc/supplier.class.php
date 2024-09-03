@@ -323,7 +323,7 @@ Incorrecto:0     -1      -2      -3
         echo "</tr>";
 
         echo "<tr class='tab_bg_1'>";
-              echo "<td>".__('CCAA')."</td>";
+              echo "<td>".__('Ubicación')."</td>";
               echo "<td>";
               PluginComproveedoresCommunity::dropdown($opt3);
               echo "</td>";

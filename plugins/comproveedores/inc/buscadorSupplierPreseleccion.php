@@ -172,7 +172,7 @@ echo"<table class='tab_cadre_fixe' style='margin-top: 20px; width:45%;border-rad
 
 			echo"<tr class='tab_bg_1 left' style='background-color:#FFF; border: 20px solid #BDBDDB;'>";
 				echo "<td class='campos_busqueda'>";
-				echo "Región ";
+				echo "Ubicación ";
 				echo "</td>";
 				echo "<td id='idRegion'>";
 				Dropdown::show('PluginComproveedoresCommunity',$opt3);

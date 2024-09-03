@@ -32,7 +32,7 @@ echo "<thead>";
         if($_GET['tipo']=='intervencion_bovis'){
             echo "<th>Exper.</th>";
         }
-        echo "<th>CCAA</th>";
+        echo "<th>Ubicacion</th>";
         echo "<th>Cliente</th>";
         echo "<th>Año</th>";
         echo "<th>Importe</th>";

@@ -14,7 +14,7 @@ $objCommonDBT=new CommonDBTM;
 	echo "<div class='cuadro_busqueda'>";				
 	echo "<div style='font-weight: bold; padding: 10px;border-radius: 4px 4px 0px 0px;position:relative;margin:0px;background-color:#0e52a0;color:#FFF;'>BÚSQUEDA DE PROYECTOS</div>";
 	echo "<div class='campo_busqueda' style='width: 45%;'>";
-	echo "<label for='ccaa' style='width: 50px;'>Ubicación (CCAA)</label>";
+	echo "<label for='ccaa' style='width: 50px;'>Ubicación </label>";
 	//Dropdown::show('PluginComproveedoresCommunity',$opt3);
 	
 	echo "<label for='prv' style='width: 50px;'>Ubicación (PRV)</label>

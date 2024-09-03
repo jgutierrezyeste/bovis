@@ -645,13 +645,43 @@
                 $('#checkAmbito_0').prop('checked', true);
             }
 
+            const paises=['Francia','Portugal','UK'];
+
             $('#checkAmbito_0').on('click', function() {
                 if($(this).prop('checked') == true){
+                    
                     $('.ambitos_check').prop('checked',true);
+                    $('#checkAmbito_39').prop('checked',false);
+                    $('#checkAmbito_40').prop('checked',false);
+                    $('#checkAmbito_41').prop('checked',false);
+                    
+                    //alert($('#etiquetaAmbito_39').text());
+                
                 }else{
                     $('.ambitos_check').prop('checked',false);
                 }
-            }); 
+            });
+
+/*$('#checkAmbito_0').on('click', function() {
+    
+                if($(this).prop('checked') == true){
+
+                    for (var i = 20; i < 42; i++)
+                        {
+                            
+                           $('#checkAmbito_'+i+'').prop('checked',true);
+                           var texto=$('#etiquetaAmbito_'+i+'').text();
+                           alert(texto);
+                           if( paises.includes(texto) )
+                            {
+                                alert('ey');
+                               $('#checkAmbito_'+i+'').prop('checked',false); 
+                            } 
+                        }
+                }else{
+                    $('.ambitos_check').prop('checked',false);
+                }
+});*/
 
             $('#addSubcontratistas').on('click', function(){
                 $('#modalDenominacionSubcontratistas').val('');
