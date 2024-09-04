@@ -630,7 +630,10 @@
                 . "no manifieste su derecho de supresión. Darse de alta como contratista de BOVIS PROJECT MANAGEMENT SA, "
                 . "implica la aceptación de estos términos de privacidad. Puede ejercer sus derechos sobre protección de datos a "
                 . "través de info@bovis.es. Puede obtener más información sobre protección de datos en nuestro Aviso Legal.";
-            echo "</div>";                        
+            echo "</div>";   
+
+
+
 
     echo "<script type='text/javascript'>
 
@@ -647,22 +650,12 @@
 
             const paises=['Francia','Portugal','UK'];
 
-            $('#checkAmbito_0').on('click', function() {
-                if($(this).prop('checked') == true){
-                    
-                    $('.ambitos_check').prop('checked',true);
-                    $('#checkAmbito_39').prop('checked',false);
-                    $('#checkAmbito_40').prop('checked',false);
-                    $('#checkAmbito_41').prop('checked',false);
-                    
-                    //alert($('#etiquetaAmbito_39').text());
-                
-                }else{
-                    $('.ambitos_check').prop('checked',false);
-                }
-            });
+            
 
-/*$('#checkAmbito_0').on('click', function() {
+
+
+
+$('#checkAmbito_0').on('click', function() {
     
                 if($(this).prop('checked') == true){
 
@@ -671,17 +664,54 @@
                             
                            $('#checkAmbito_'+i+'').prop('checked',true);
                            var texto=$('#etiquetaAmbito_'+i+'').text();
-                           alert(texto);
+                           var texto=texto.trim();
                            if( paises.includes(texto) )
                             {
-                                alert('ey');
+                                
                                $('#checkAmbito_'+i+'').prop('checked',false); 
                             } 
                         }
                 }else{
                     $('.ambitos_check').prop('checked',false);
                 }
+});
+
+
+
+
+/*var pais1='Portugal';
+var pais2='Francia';
+var pais3='UK';
+
+$('#checkAmbito_0').on('click', function() {
+    
+    
+                if($(this).prop('checked') == true){
+
+                    for (var i = 20; i < 42; i++)
+                        {
+                           
+                           $('#checkAmbito_'+i+'').prop('checked',true);
+                           var texto=($('#etiquetaAmbito_'+i+'').text());
+                           var texto=texto.trim();
+                          
+                           
+                            if (texto == pais1 || texto == pais2 || texto == pais3) 
+                            {
+                                
+                                $('#checkAmbito_'+i+'').prop('checked',false);
+                            }
+                           
+                           
+                        }
+                }else{
+                    $('.ambitos_check').prop('checked',false);
+                }
 });*/
+
+
+
+
 
             $('#addSubcontratistas').on('click', function(){
                 $('#modalDenominacionSubcontratistas').val('');
