@@ -130,7 +130,7 @@ class Search {
 		echo "</tr>";		
 		echo "<tr>";
 			echo "<td style='width:10%; padding: 4px; text-align: right;'>";
-			echo "Región ";
+			echo "Ubicacion ";
 			echo "</td>";
 			echo "<td style='width:40%; padding: 4px;'>";
 			Dropdown::show('PluginComproveedoresCommunity',$opt3);
