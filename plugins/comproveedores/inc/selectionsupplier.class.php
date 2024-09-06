@@ -164,6 +164,21 @@
                                     echo "</tr>";				
                                     echo "</table>";
                             }else{
+                            		echo "<table style='width: 40%; margin-bottom: 15px; margin-top: 8px; margin-left: 30%; padding: 5px; border-radius: 4px; background-color: #f8f7f3;   -webkit-box-shadow: 12px 8px 5px -5px rgba(219,219,219,1);    -moz-box-shadow: 12px 8px 5px -5px rgba(219,219,219,1);    box-shadow: 12px 8px 5px -5px rgba(219,219,219,1);'>";                                    
+                                   echo "<tr style='font-size: 12px; font-weight: bold;'>";
+                                            echo "<td colspan='3' class='center' style='padding-right: 20px;'>PRESUPUESTO OBJETIVO (€): ".number_format($valor_contrato, 0, ',', '.')." € TIPO: ".$nombre_especialidad."</td>";
+                                    echo "</tr>";
+                                    echo "<tr>";
+                                            echo "<td class='right'>NOMBRE :</td>";
+                                            echo "<td class='left'><input id='nombre_lic' type='text' /></td>";
+                                            echo "<td rowspan='2' class='left'><input id='incorporar' type='submit' class='boton_add' value=' ' title='INCORPORAR LICITADOR' style='margin-right: 15px;' /><input id='filtros' type='submit' class='boton_add_proveedor' value=' ' title='AÑADIR LICITADORES' style='margin-right: 15px;' /></td>";
+                                    echo "</tr>";
+                                    echo "<tr class='top' style='height: 30px;'>";
+                                            echo "<td class='right'>CIF :</td>";
+                                            echo "<td class='left'><input id='cif_lic' type='text' /></td>";
+                                            echo "<td colspan='4'></td>";
+                                    echo "</tr>";				
+                                    echo "</table>";
                                     //si ya existe un proveedor seleccionado se muestran sus datos y los datos 
                                     //de las empresas que licitaron
                                     $proveedor_seleccionado = 1;
@@ -215,9 +230,9 @@
 			//ya que el proceso ya se ha cerrado.
 			if ($proveedor_seleccionado == 1) {
 				echo "<script type='text/javascript'>
-				$('.boton_borrar_licitadores').css('display', 'none');
-				$('.boton_editar_licitadores').css('display', 'none');
-                                $('.chkLic').css('display', 'none');
+				//$('.boton_borrar_licitadores').css('display', 'none');
+				//$('.boton_editar_licitadores').css('display', 'none');
+                               //$('.chkLic').css('display', 'none');
 				</script>";
 			}
                                              

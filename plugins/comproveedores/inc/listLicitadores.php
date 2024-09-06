@@ -6,6 +6,8 @@ include ("../../../inc/includes.php");
 GLOBAL $DB,$CFG_GLPI;
 $objCommonDBT=new CommonDBTM;
 
+
+
 if ($_GET['projecttasks_id']) {
     $projecttasks_id = $_GET['projecttasks_id'];
 }else{
@@ -150,17 +152,23 @@ echo "<tbody>";
 
         echo "<td style='text-align:center; width: 100px;' class='columnaCHK' >";
             echo "<input type='hidden' id='supplier_id_".$data['licitador_id']."' value='".$data['suppliers_id']."' />";
-            if($data['adjudicatario']==1){
-                    $adjudicatario=1;
-                    echo "<image src='".$CFG_GLPI["root_doc"]."/pics/ok.png' title='adjudicatario' style='width:20px;height:20px;'/>";
-            }else{
-                    if($nombre_adjudicatario==''){
-                        echo "<input id='chkAdjudicatario_".$data['licitador_id']."' class='chkLic' type='checkbox'/>";						
-                    }
-                    else {
-                        echo " - ";
-                    }
-            }
+        
+
+                if($data['adjudicatario']==1){
+                        $adjudicatario=1;
+                        echo "<image src='".$CFG_GLPI["root_doc"]."/pics/ok.png' title='adjudicatario' style='width:18px;height:18px;' align='left'/>";
+                        
+                        echo "<input id='chkAdjudicatario_".$data['licitador_id']."' class='chkLic' type='checkbox' checked='checked' align='right'/> "; 
+                }else{
+                        if($nombre_adjudicatario==''){
+                            echo "<input id='chkAdjudicatario_".$data['licitador_id']."' class='chkLic' type='checkbox' align='right'/>";						
+                        }
+                        else {
+                            echo " - ";
+                        }
+                }
+        
+            
         echo "</td>";
         if($ver && $nombre_adjudicatario == ''){ 
             echo "<td><input id='editarLicitadores_{$data['licitador_id']}' class='boton_editar_licitadores' type='submit' value='' title='editar elemento'/></td>";
@@ -175,19 +183,12 @@ echo "<tbody>";
 
 echo "</tbody>";
 echo "</table>";
-if( $adjudicatario == 1)
+/*if( $adjudicatario == 1)
     {   
         echo "<input style='height:50px; width:150px; font-size:18px' type='button' id='modificarAdjudicatario' value='Editar licitacion'/> ";
-        /*echo "<input style='height:50px; width:150px; font-size:18px' type='button' id='comparativo' value='Comparativo'/> ";*/
-        /*echo "<a href='".$CFG_GLPI['root_doc'].
-                   "/inc/document_item.php' class='edit_document fa fa-eye pointer' title='".
-                   _sx("button", "Show")."'>";*/
-        /*echo "<form method='post' action='".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/insertArchivoComparativo.php' enctype='multipart/form-data'>
-                <input type='file' name='archivo' id='archivo'/>
-                <input type='submit' value='enviar'/>
-                </form>";*/
+        
                 
-    }
+    }*/
 
 
 /*echo "<div id='dialogoArchivo' title='Añadir comparativo'>
@@ -261,7 +262,23 @@ echo "<div id='dialogoAdjudicatario' title='Adjudicar licitador'>
 </td>
 <input id='adjudicarIdSupplier' type='hidden' value='' />
 <input id='adjudicarIdProjectTask' type='hidden' value='' />
-</div>";			
+</tr>
+</table>";
+
+echo "<div id='dialogoDesmarcarAdjudicatario' title=' Desmarcar adjudicatario licitador'>
+<table>
+<tr>
+
+<td style='padding:10px;'>
+    ¿Realmente desea DESMARCAR este adjudicatario?
+</td>
+<input id='desadjudicarIdSupplier' type='hidden' value='' />
+<input id='desadjudicarIdProjectTask' type='hidden' value='' />
+</tr>
+</table>";
+
+
+
 
 echo "<script type='text/javascript'>
 var ver = $('#verLicitadores').val();
@@ -391,6 +408,7 @@ width: 250,
 modal: true,
 buttons: {
     'SI': function() { 
+
             var idsupplier = $('#adjudicarIdSupplier').val();
             var idprojecttask = $('#adjudicarIdProjectTask').val();
 
@@ -400,6 +418,7 @@ buttons: {
                     data: {'idsupplier':idsupplier,	'idprojecttask':idprojecttask},                  
                     url:'".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/adjudicarSupplierFromPreselection.php',  				
                     success:function(data){
+
                             window.location.reload(true);
                     },
                     error: function(result) {
@@ -415,7 +434,44 @@ buttons: {
 close: function() {
     $('#dialogoAdjudicatario').dialog('close');
 }
-});				
+});	
+
+
+$('#dialogoDesmarcarAdjudicatario').dialog({
+autoOpen: false,
+height: 200,
+width: 250,
+modal: true,
+buttons: {
+    'SI': function() { 
+                    alert('hello');
+
+            var idsupplier = $('#desadjudicarIdSupplier').val();
+            var idprojecttask = $('#desadjudicarIdProjectTask').val();
+            
+            $.ajax({ 
+                    async: false, 
+                    type: 'GET',
+                    data: {'idsupplier':idsupplier, 'idprojecttask':idprojecttask},                  
+                    url:'".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/eliminaradjudicarSupplierFromPreselection.php',               
+                    success:function(data){
+
+                            window.location.reload(true);
+                    },
+                    error: function(result) {
+                            alert('Data not found: ".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/listLicitadores.php');
+                    }
+            });
+
+            $('#dialogoDesmarcarAdjudicatario').dialog('close');},
+    'NO': function() {
+            $('#dialogoDesmarcarAdjudicatario').dialog('close');
+    }
+},
+close: function() {
+    $('#dialogoDesmarcarAdjudicatario').dialog('close');
+}
+});         			
 
 $('#dialogoBorrado').dialog({
 autoOpen: false,
@@ -489,26 +545,59 @@ $('.valores').on('click', function(){
 
 
 $('.chkLic').on('click', function(){	   
+  
+        if($(this).prop('checked') == true)
+  
+        {   
+        
+                var idLic = $(this).attr('id').replace('chkAdjudicatario_','');
+                var cont = 1;
 
-var idLic = $(this).attr('id').replace('chkAdjudicatario_','');
-var cont = 1;
-var idnom = '#nombre_'+idLic;
-var nombre = $(idnom).text();
-var supplier = '#supplier_id_'+idLic;
-var idadj = $(supplier).val();
-$('#adjudicarIdSupplier').val(idadj);
-$('#adjudicarIdProjectTask').val(".$projecttasks_id.");
+                var idnom = '#nombre_'+idLic;
+                var nombre = $(idnom).text();
+                var supplier = '#supplier_id_'+idLic;
+                var idadj = $(supplier).val();
+                $('#adjudicarIdSupplier').val(idadj);
+                $('#adjudicarIdProjectTask').val(".$projecttasks_id.");
 
-if(".$projecttasks_id.">0 && idadj>0){
-        if(cont==1){			
-                $('#dialogoAdjudicatario').dialog('open');
-                $('#adj').text(nombre);				
-        }else{
-                alert('Debe seleccionar un único licitador');
+                if(".$projecttasks_id.">0 && idadj>0){
+                        if(cont==1){			
+                                $('#dialogoAdjudicatario').dialog('open');
+                                $('#adj').text(nombre);				
+                        }else{
+                                alert('Debe seleccionar un único licitador');
+                        }
+                }else{
+                        alert('No se ha registra un contrato o proveedor.');
+                }
         }
-}else{
-        alert('No se ha registra un contrato o proveedor.');
-}
+
+        if($(this).prop('checked') == false)
+        {
+            
+                var idLic = $(this).attr('id').replace('chkAdjudicatario_','');
+                //var cont = 1;
+
+                var idnom = '#nombre_'+idLic;
+                var nombre = $(idnom).text();
+                var supplier = '#supplier_id_'+idLic;
+                var idadj = $(supplier).val();
+                $('#desadjudicarIdSupplier').val(idadj);
+                $('#desadjudicarIdProjectTask').val(".$projecttasks_id.");
+
+                if(".$projecttasks_id.">0 && idadj>0){
+                                  
+                    $('#dialogoDesmarcarAdjudicatario').dialog('open');
+                    $('#adj').text(nombre);             
+                        
+                }else{
+                        alert('No se ha registra un contrato o proveedor.');
+                }
+        }
+
+
+
+
 });	
 
 
@@ -516,11 +605,12 @@ if(".$projecttasks_id.">0 && idadj>0){
 
 $('#modificarAdjudicatario').on('click', function(){
     var idprojecttask = ".$projecttasks_id.";
+    var edicion=1;
     
 $.ajax({ 
                     async: false, 
                     type: 'GET',
-                    data: {'projecttasks_id':idprojecttask },                  
+                    data: {'projecttasks_id':idprojecttask,'edicion':edicion },                  
                     url: '".$CFG_GLPI["root_doc"]."/plugins/comproveedores/inc/updateLicitadores.php',                
                     success:function(data){
                            
