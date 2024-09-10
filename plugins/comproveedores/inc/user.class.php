@@ -76,14 +76,43 @@
                             $SupplierID = $item->fields['id'];
                         }
                     }else{
-                        //$profile_Id = $item->getProfileByUserID($user_Id);
-                        if(isset($item->fields['id'])){
-                            $fkcv = $item->fields['id'];
-                        }
-                        if(isset($item->fields['supplier_id'])){
-                            $SupplierID = $item->fields['supplier_id'];
-                        }
+                        
+                            $fkcv = "";
+                        
+                            if(isset($item->fields['id'])){
+                                $SupplierID = $item->fields['id'];
+                            }
+                            if(isset($item->fields['name'])){
+                                $name= $item->fields['name'];
+                            }
+
+                             $aux = getdate();
+                            if($aux['mon']<10){$mes='0'.$aux['mon'];}else{$mes=$aux['mon'];}
+                            if($aux['mday']<10){$dia = '0'.$aux['mday'];}else{$dia=$aux['mday'];}
+                            $fecha_alta = $aux['year'].'-'.$mes.'-'.$dia;
+                            $usuarioID = $_SESSION['glpiID'];
+                            $sql = "INSERT INTO glpi_plugin_comproveedores_cvs (name,
+                                    supplier_id,
+                                    fecha_alta,
+                                    usuario_alta
+                                    ) VALUES ('{$name}',{$SupplierID},'{$fecha_alta}',{$usuarioID})";                            
+                            $result = $DB->query($sql);
+
+
+                            $sql= "SELECT id from glpi_plugin_comproveedores_cvs where name='{$name} "."'";
+                            $result2= $DB->query($sql);
+                            if ($result2->num_rows != 0){
+                                
+                                while ($data=$DB->fetch_array($result2)) 
+                                    $fkcv = $data['id'];
+                            }
+                            $sql2="UPDATE glpi_suppliers set cv_id={$fkcv} where id={$SupplierID}";
+                            $result= $DB->query($sql2);
+                            
                     }
+
+
+                    
                     
                     echo "<style>
                          .checkboxUsuario{
