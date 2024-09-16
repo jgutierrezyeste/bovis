@@ -492,7 +492,7 @@
                         $resultambito = $DB->query($sqlambito);
                         $num = 0;
                         echo "<ul>";
-                        echo "<li id='lineaAmbito_0' class='lineaAmbito'><input id='checkAmbito_0' type='checkbox' value='0' class='ambitos_check'><label id='etiquetaAmbito_0' class='etiquetaAmbito_check' style='font-weight:bold;'> TODAS LAS CCAA </label></li>";
+                        echo "<li id='lineaAmbito_0' class='lineaAmbito'><input id='checkAmbito_0' type='checkbox' value='0' class='ambitos_check'><label id='etiquetaAmbito_0' class='etiquetaAmbito_check' style='font-weight:bold;'> TODAS LAS CCAA (ESPAÑA) </label></li>";
                         while ($dataambito = $DB->fetch_array($resultambito)) {
                             if($dataambito['presencia']==0){
                                 echo "<li id='lineaAmbito_{$dataambito['ID']}' class='lineaAmbito'><input id='checkAmbito_{$dataambito['ID']}' value='{$dataambito['ID']}' class='ambitos_check' type='checkbox' ><label id='etiquetaAmbito_{$dataambito['ID']}' class='etiquetaAmbito_check'> {$dataambito['NAME']}</label></li>";
